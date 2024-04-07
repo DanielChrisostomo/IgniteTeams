@@ -1,5 +1,6 @@
 import React from "react";
 import { FlatList } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import Header from "@components/Header";
 import Highlight from "@components/Highlight";
 import GroupCard from "@components/GroupCard";
@@ -9,6 +10,12 @@ import Button from "@components/Button";
 
 const Groups = () => {
   const [groups, setGroups] = React.useState<string[]>([]);
+
+  const navigation = useNavigation();
+
+  function handleNewGroup() {
+    navigation.navigate("new");
+  }
 
   return (
     <S.Container>
@@ -26,7 +33,7 @@ const Groups = () => {
         showsVerticalScrollIndicator={false}
       />
 
-      <Button title="Criar nova turma" />
+      <Button title="Criar nova turma" onPress={handleNewGroup} />
     </S.Container>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import * as S from "./styles";
+import { useRoute } from "@react-navigation/native";
 import Header from "@components/Header";
 import Highlight from "@components/Highlight";
 import ButtonIcon from "@components/ButtonIcon";
@@ -10,17 +11,21 @@ import PlayerCard from "@components/PlayerCard";
 import ListEmpty from "@components/ListEmpty";
 import Button from "@components/Button";
 
+type RouteParams = {
+  group: string;
+};
+
 const Players = () => {
   const [team, setTeam] = React.useState("Time A");
   const [players, setPlayers] = React.useState([]);
 
+  const route = useRoute();
+  const { group } = route.params as RouteParams;
+
   return (
     <S.Container>
       <Header showBackButton />
-      <Highlight
-        title="Nome da turma"
-        subtitle="adicione a galera e separe os times"
-      />
+      <Highlight title={group} subtitle="adicione a galera e separe os times" />
       <S.Form>
         <Input placeholder="Nome da Pessoa" autoCorrect={false} />
         <ButtonIcon icon="add" />
