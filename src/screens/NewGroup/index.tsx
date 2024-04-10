@@ -7,7 +7,7 @@ import Button from "@components/Button";
 import Input from "@components/Input";
 import { groupCreate } from "@storage/groups/groupCreate";
 import { Alert } from "react-native";
-import { appError } from "@utils/AppError";
+import { AppError } from "@utils/AppError";
 
 const NewGroup = () => {
   const [group, setGroup] = React.useState("");
@@ -21,7 +21,7 @@ const NewGroup = () => {
       await groupCreate(group);
       navigate.navigate("players", { group });
     } catch (error) {
-      if (error instanceof appError) {
+      if (error instanceof AppError) {
         Alert.alert("Novo Grupo", error.message);
       } else {
         Alert.alert("Novo Grupo", "Não foi possível criar um novo grupo");

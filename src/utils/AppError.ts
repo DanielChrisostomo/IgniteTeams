@@ -1,4 +1,4 @@
-export class appError {
+export class AppError {
   message: string;
   constructor(message: string) {
     this.message = message;
